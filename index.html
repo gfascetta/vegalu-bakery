@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/1c6a38c3f0.js" crossorigin="anonymous"></script>
+    <title>Vegalu Bakery</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <input type="checkbox" name="" id="navbar__checkbox">
+        <label for="navbar__checkbox" class="navbar__label">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+        </label>
+        <div class="menu-container">
+            <ul class="nav__menu--ul">
+                <li class="nav__menu--li">
+                    <a href="" class="menu-link">Inicio</a>
+                </li>
+                <li class="nav__menu--li">
+                    <a href="" class="menu-link">Nosotros</a>
+                </li>
+                <li class="nav__menu--li">
+                    <a href="" class="menu-link">Nuestros productos</a>
+                </li>
+                <li class="nav__menu--li">
+                    <a href="" class="menu-link">Contacto</a>
+                </li>
+            </ul>
+            <div class="carrito">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <div class="cart-count"></div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <section class="hero-section">
+            <div class="hero-section__text">
+                <h1 class="hero-section__h1">Vegalu</h1>
+                <h2 class="hero-section__h2">bakery</h2>
+            </div>
+        </section>
+
+        <!-- ---seccion about--- -->
+        <section class="about">
+            <div class="custom-shape-divider-top-1629176088">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+            <div class="about__text">
+                <h2 class="about__text--h2">Acerca de nosotros</h2>
+                <p class="about__text--p">Creemos firmemente que comer sano y rico no solo es posible sino que te ayudamos a hacerlo realidad. Preparamos tu pedido en el día. Llevate siempre tu orden con aroma a recién salido del horno.</p>
+                <p class="about__text--p">Dejate tentar por nuestros productos frescos. ¿Querés hacer un pedido grande? Escribinos y te lo preparamos! </p>
+            </div>
+            <div class="about__img">
+                <img src="img/products/croissant.jpg" alt="" height="300px">
+            </div>
+
+        </section>
+
+        <!-- ---seccion productos--- -->
+        <section class="products-section" id="plants">
+
+            <h2 class="products-section__h2">Nuestros Productos</h2>
+            <div class="card-container__products">
+
+            </div>
+        </section>
+        <!-- ---seccion de contacto--- -->
+        <section class="contact-container" id="contact">
+
+            <div class="contact">
+                <h2 class="contact--h2">Hacenos tu consulta</h2>
+                <div class="contact-body-container">
+                    <div class="contact__img">
+                        <img class="contact-aside-img" src="img/banners/trigo.jpg" alt="">
+                    </div>
+                    <div class="contact__form">
+                        <form class="contact--form">
+                            <label class="form__label" for="name">Nombre</label>
+                            <input class="form__input" type="text" name="nombre" id="name">
+                            <label class="form__label" for="email">Email</label>
+                            <input class="form__input" type="email" name="email" id="email">
+                            <label class="form__label" for="message">Mensaje</label>
+                            <textarea class="form__textarea" name="message" id="message" cols="30" rows="10"></textarea>
+                            <button type="submit" class="contact-button-submit">Enviar</button>
+                        </form>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="contact-redes">
+                <h2 class="contact__redes--h2">También podés escribirnos por</h2>
+                <div class="redes">
+                    <div class="icono-red-social facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="icono-red-social instagram">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="icono-red-social whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-shape-divider-bottom-1629175868">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-firma-p">2022 © Gabriela Fascetta</p>
+        </div>
+    </footer>
+    <script src="app.js" type="module"></script>
+</body>
+
+</html>

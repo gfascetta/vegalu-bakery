@@ -1,0 +1,363 @@
+:root {
+    --darkest: rgb(112, 45, 0);
+    --primary: #8d662b;
+    --secondary: #c7b27a;
+    --lighter-secondary: #fdfde8;
+    --third: #ffb5ac;
+    --fourth: #ffe4e1;
+    --white: ivory;
+    --main-font: 'Redressed', cursive;
+    --secondary-font: 'El Messiri', sans-serif;
+    --letra-chica: 'Didact Gothic', sans-serif;
+    --font-ajustada: 'Roboto Condensed', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    background-color: var(--lighter-secondary);
+    background-image: url(img/banners/bread-and-buns-top-view-with-wooden-background.jpg);
+    /* <a href='https://www.freepik.es/fotos/comida'>Foto de Comida creado por freepik - www.freepik.es</a> */
+    background-size: cover;
+    overflow: hidden;
+}
+
+.body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ************************************************* */
+
+
+/* --------------nav menu hamburguesa----------------- */
+
+.navbar {
+    width: 100%;
+    height: 9vh;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+#navbar__checkbox,
+.navbar__label,
+.fa-times {
+    display: none;
+}
+
+.nav__menu--ul {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.nav__menu--li {
+    list-style: none;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: var(--white);
+    text-shadow: 3px 0px 2px rgba(0, 0, 0, 0.43);
+    font-family: var(--secondary-font);
+}
+
+.menu-link:hover {
+    cursor: pointer;
+    color: rgb(1, 53, 1);
+    text-shadow: 3px 0px 2px rgba(255, 255, 255, 0.43);
+}
+
+.login-menu {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.nav__logo {
+    width: 20%;
+    height: auto;
+    padding: 0.4rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.logo-img {
+    width: 70%;
+}
+
+
+/* *************************************************** */
+
+.container {
+    padding: 2rem 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.12);
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.login {
+    width: 70%;
+    height: auto;
+    padding: 0 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__h1 {
+    font-family: var(--secondary-font);
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.form__label {
+    font-family: var(--letra-chica);
+    font-size: 1.2rem;
+    padding-top: 1.5rem;
+}
+
+.form__input {
+    width: 70%;
+    height: 1.7rem;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    border-bottom: 2px solid var(--primary);
+    transition: border-color 0.2s;
+    margin-bottom: 1.5rem;
+}
+
+.form__input:focus {
+    border-color: rgb(99, 0, 138);
+}
+
+.form__button {
+    width: 50%;
+    outline: none;
+    border: 0;
+    padding: 0.5rem;
+    border-radius: 15px;
+    background-color: #ffccc6;
+    font-family: var(--letra-chica);
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.form__input#password {
+    margin-bottom: 0.5rem
+}
+
+.forgot-password {
+    font-family: var(--letra-chica);
+    font-size: 1rem;
+    color: rgb(99, 0, 138);
+    margin-bottom: 1.5rem;
+}
+
+.form__button:hover {
+    background-color: var(--third);
+}
+
+.sidebar {
+    width: 29%;
+    padding: 0 1rem;
+}
+
+.sidebar-text {
+    width: 100%;
+    padding: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar__p {
+    width: 100%;
+    font-family: var(--letra-chica);
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.register-button {
+    width: 100%;
+    text-align: center;
+    font-family: var(--letra-chica);
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.sidebar__img-container {
+    width: 100%;
+}
+
+.sidebar--img {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 30px 0 30px 0;
+}
+
+
+/* **************************************************************** */
+
+
+/* ----------------RESPONSIVE------------------- */
+
+
+/* ******************************************************************** */
+
+@media (min-width:0px) and (max-width:900px) {
+    /* navbar */
+    .navbar {
+        display: flex;
+        align-items: center;
+    }
+    .nav__logo {
+        width: 30%;
+    }
+    .logo-img {
+        width: 80%;
+        padding: 0.5rem;
+    }
+    .nav__menu--ul {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 9vh;
+        left: 0;
+        transform: translateX(-200%);
+        background-color: var(--primary);
+        transition-property: transform;
+        transition-duration: 1s;
+        transition-timing-function: ease-in-out;
+        z-index: 3;
+        box-shadow: 4px 12px 44px 8px rgba(0, 0, 0, 0.70);
+        -webkit-box-shadow: 4px 12px 44px 8px rgba(0, 0, 0, 0.70);
+        -moz-box-shadow: 4px 12px 44px 8px rgba(0, 0, 0, 0.70);
+    }
+    .sign-up,
+    .sign-in {
+        border: 0;
+        background-color: transparent;
+    }
+    .sign-in:hover,
+    .sign-up:hover {
+        background-color: transparent;
+    }
+    .nav__menu--ul,
+    .login-menu {
+        width: 100%;
+        flex-direction: column;
+    }
+    .nav__menu--li {
+        width: 100%;
+        border-bottom: 1px solid var(--lighter-secondary);
+        text-align: center;
+        padding: 0.35rem 0;
+    }
+    .nav__menu--li:hover {
+        background-color: var(--secondary);
+        filter: brightness(120%);
+    }
+    .navbar__label {
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .fa-bars {
+        font-size: 1.5rem;
+        color: var(--lighter-secondary);
+        z-index: 1;
+    }
+    .fa-times {
+        display: none;
+        opacity: 0;
+    }
+    #navbar__checkbox:checked~.nav__menu--ul {
+        width: 100%;
+        transform: translateX(0);
+    }
+    #navbar__checkbox:checked~.navbar__label>.fa-bars {
+        display: none;
+    }
+    #navbar__checkbox:checked~.navbar__label>.fa-times {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--lighter-secondary);
+        opacity: 1;
+    }
+    /* contenedor que tiene todo el cuerpo delante del fondo */
+    .container {
+        width: 80%;
+        padding: 1rem;
+    }
+    .login {
+        padding-bottom: 1rem;
+    }
+    .sidebar {
+        padding-top: 0rem;
+    }
+}
+
+@media (max-width:550px) {
+    /* navbar */
+    .nav__logo {
+        width: 40%;
+    }
+    .logo-img {
+        width: 100%;
+        padding: 0.5rem;
+    }
+    /* contenedor que tiene todo el cuerpo delante del fondo */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .sign-in__h1 {
+        font-size: 2rem;
+    }
+    .form__label {
+        padding-top: 1.2rem;
+    }
+    .form__input {
+        width: 90%;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    .sidebar__img-container {
+        display: none;
+    }
+}
