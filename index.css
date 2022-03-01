@@ -215,6 +215,30 @@ body {
 
 /* ******** productos**************************************************** */
 
+.products-filter {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2rem 0rem;
+}
+
+.categories {
+    font-family: var(--font-ajustada);
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.categories:hover {
+    text-decoration: underline;
+    font-weight: 700;
+    transition-property: text-decoration, font-weight;
+    transition-duration: 2s;
+    transition-timing-function: ease-in;
+}
+
 .products-section {
     color: var(--darkest);
     width: 100%;
@@ -499,6 +523,53 @@ body {
 .fab {
     color: white;
     font-size: 1.5rem;
+}
+
+
+/* ************CART/CARRITO******************************************************* */
+
+
+/* ******************************************************************************* */
+
+.cart-container {
+    background-color: yellow;
+    height: auto;
+    min-height: 10rem;
+    width: 40%;
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-family: var(--letra-chica);
+}
+
+.cart-list {
+    list-style: none;
+    width: 100%;
+}
+
+.cart-item {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.item-img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.cart-container button {
+    font-family: var(--letra-chica);
+    border-radius: 10px;
+    padding: 0.2rem;
+    background-color: azure;
+    font-weight: 600;
 }
 
 

@@ -82,6 +82,9 @@
         <section class="products-section" id="plants">
 
             <h2 class="products-section__h2">Nuestros Productos</h2>
+            <div class="products-filter">
+                <!-- renderizarlo desde js. por cada categoria agrego un span. contemplar el mostrar todas -->
+            </div>
             <div class="card-container__products">
 
             </div>
@@ -132,6 +135,25 @@
             </div>
         </section>
     </main>
+    <div class="cart-container">
+        <ul class="cart-list">
+            <li class="cart-item">
+                <img src="" alt="" class="item-img">
+                <span class="name">nombre producto</span>
+                <button class="decrease-button">-</button>
+                <span class="unidades">0</span>
+                <button class="increase-button">+</button>
+                <button class="delete">eliminar</button>
+                <span class="subtotal">Subtotal:</span>
+                <span class="subtotal-number">100</span>
+            </li>
+        </ul>
+        <div class="total-container">
+            <span class="total">Total:</span>
+            <span class="total-number"></span>
+        </div>
+        <button type="submit" class="confirm-purchase">Finalizar compra</button>
+    </div>
     <footer class="footer">
         <div class="footer-container">
             <p class="footer-firma-p">2022 © Gabriela Fascetta</p>

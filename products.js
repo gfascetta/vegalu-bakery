@@ -1,10 +1,19 @@
+const categories = [
+    "Panes",
+    "Facturas",
+    "Sandwichs",
+    "Grasa",
+    "Barras de cereal",
+    "Todos"
+]
+
 const products = [{
         id: 1,
         img: "img/products/lactal-blanco.jpg",
         name: "Pan Lactal Blanco",
         info: "Paquete de 350gr cortado en rodajas",
         price: 200,
-        category: "panes",
+        category: "Panes",
     },
     {
         id: 2,
@@ -12,7 +21,7 @@ const products = [{
         name: "Pan de Salvado",
         info: "Paquete de 350gr cortado en rodajas",
         price: 220,
-        category: "panes",
+        category: "Panes",
     },
     {
         id: 3,
@@ -20,7 +29,7 @@ const products = [{
         name: "Pan Integral con Semillas",
         info: "Paquete de 350gr cortado en rodajas",
         price: 250,
-        category: "panes",
+        category: "Panes",
     },
     {
         id: 4,
@@ -28,7 +37,7 @@ const products = [{
         name: "Mignoncitos",
         info: "Paquete de 250gr",
         price: 55,
-        category: "panes",
+        category: "Panes",
     },
     {
         id: 5,
@@ -36,7 +45,7 @@ const products = [{
         name: "Flautas",
         info: "Paquete de 250gr",
         price: 55,
-        category: "panes",
+        category: "Panes",
     },
     {
         id: 6,
@@ -44,7 +53,7 @@ const products = [{
         name: "Baguette",
         info: "1 unidad por bolsa",
         price: 120,
-        category: "panes",
+        category: "Panes",
     },
     {
         id: 7,
@@ -52,7 +61,7 @@ const products = [{
         name: "Pan de leche",
         info: "paquete x unidad",
         price: 60,
-        category: "panes",
+        category: "Panes",
     },
     {
         id: 8,
@@ -60,7 +69,7 @@ const products = [{
         name: "Croissant",
         info: "venta por unidad",
         price: 90,
-        category: "facturas",
+        category: "Facturas",
     },
     {
         id: 9,
@@ -68,7 +77,7 @@ const products = [{
         name: "Crema pastelera",
         info: "venta por unidad",
         price: 50,
-        category: "facturas",
+        category: "Facturas",
     },
     {
         id: 10,
@@ -76,7 +85,7 @@ const products = [{
         name: "Dulce de Leche",
         info: "venta por unidad",
         price: 50,
-        category: "facturas",
+        category: "Facturas",
     },
     {
         id: 11,
@@ -84,7 +93,7 @@ const products = [{
         name: "Medialuna de Grasa",
         info: "venta por unidad",
         price: 50,
-        category: "facturas",
+        category: "Facturas",
     },
     {
         id: 12,
@@ -92,7 +101,7 @@ const products = [{
         name: "Medialuna de Manteca",
         info: "venta por unidad",
         price: 50,
-        category: "facturas",
+        category: "Facturas",
     },
     {
         id: 13,
@@ -100,7 +109,7 @@ const products = [{
         name: "Pastelera y membrillo",
         info: "venta por unidad",
         price: 50,
-        category: "facturas",
+        category: "Facturas",
     },
     {
         id: 14,
@@ -108,7 +117,7 @@ const products = [{
         name: "Sandwich Jamon crudo y lechuga",
         info: "bandeja de 2 unidades",
         price: 300,
-        category: "sandwichs",
+        category: "Sandwichs",
     },
     {
         id: 15,
@@ -116,7 +125,7 @@ const products = [{
         name: "Sandwich Jamon y Queso",
         info: "bandeja de 2 unidades",
         price: 260,
-        category: "sandwichs",
+        category: "Sandwichs",
     },
     {
         id: 16,
@@ -124,7 +133,7 @@ const products = [{
         name: "Sandwich Tomate y Queso",
         info: "bandeja de 2 unidades",
         price: 240,
-        category: "sandwichs",
+        category: "Sandwichs",
     },
     {
         id: 17,
@@ -132,7 +141,7 @@ const products = [{
         name: "Bizcochitos de grasa",
         info: "Bolsa de 250gr",
         price: 150,
-        category: "grasa",
+        category: "Grasa",
     },
     {
         id: 18,
@@ -140,7 +149,7 @@ const products = [{
         name: "Cremona",
         info: "Venta por unidad",
         price: 300,
-        category: "grasa",
+        category: "Grasa",
     },
     {
         id: 19,
@@ -148,9 +157,9 @@ const products = [{
         name: "Barras de Cereal",
         info: "paquete x 6 unidades",
         price: 320,
-        category: "barras de cereal",
+        category: "Barras de cereal",
     },
 ]
 
 
-export { products };
+export { products, categories };
