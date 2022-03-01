@@ -37,13 +37,13 @@
                     <a href="" class="menu-link">Inicio</a>
                 </li>
                 <li class="nav__menu--li">
-                    <a href="" class="menu-link">Nosotros</a>
+                    <a href="#about-section" class="menu-link">Nosotros</a>
                 </li>
                 <li class="nav__menu--li">
-                    <a href="" class="menu-link">Nuestros productos</a>
+                    <a href="#products-section" class="menu-link">Nuestros productos</a>
                 </li>
                 <li class="nav__menu--li">
-                    <a href="" class="menu-link">Contacto</a>
+                    <a href="#contact-section" class="menu-link">Contacto</a>
                 </li>
             </ul>
             <div class="carrito">
@@ -61,7 +61,7 @@
         </section>
 
         <!-- ---seccion about--- -->
-        <section class="about">
+        <section class="about" id="about-section">
             <div class="custom-shape-divider-top-1629176088">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
@@ -79,10 +79,11 @@
         </section>
 
         <!-- ---seccion productos--- -->
-        <section class="products-section" id="plants">
+        <section class="products-section" id="products-section">
 
             <h2 class="products-section__h2">Nuestros Productos</h2>
             <div class="products-filter">
+                <span class="categories"></span>
                 <!-- renderizarlo desde js. por cada categoria agrego un span. contemplar el mostrar todas -->
             </div>
             <div class="card-container__products">
@@ -90,7 +91,7 @@
             </div>
         </section>
         <!-- ---seccion de contacto--- -->
-        <section class="contact-container" id="contact">
+        <section class="contact-container" id="contact-section">
 
             <div class="contact">
                 <h2 class="contact--h2">Hacenos tu consulta</h2>
@@ -137,16 +138,7 @@
     </main>
     <div class="cart-container">
         <ul class="cart-list">
-            <li class="cart-item">
-                <img src="" alt="" class="item-img">
-                <span class="name">nombre producto</span>
-                <button class="decrease-button">-</button>
-                <span class="unidades">0</span>
-                <button class="increase-button">+</button>
-                <button class="delete">eliminar</button>
-                <span class="subtotal">Subtotal:</span>
-                <span class="subtotal-number">100</span>
-            </li>
+
         </ul>
         <div class="total-container">
             <span class="total">Total:</span>
@@ -154,6 +146,7 @@
         </div>
         <button type="submit" class="confirm-purchase">Finalizar compra</button>
     </div>
+
     <footer class="footer">
         <div class="footer-container">
             <p class="footer-firma-p">2022 © Gabriela Fascetta</p>

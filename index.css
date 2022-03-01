@@ -340,6 +340,11 @@ body {
     border-radius: 15px;
 }
 
+.disabled {
+    background-color: aquamarine;
+    cursor: default;
+}
+
 
 /* ****** contacto **************************************** */
 
