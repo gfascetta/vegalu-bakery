@@ -7,9 +7,9 @@ const navbar = document.querySelector('.navbar');
 const filterContainer = document.querySelector(".products-filter");
 const cardContainer = document.querySelector(".card-container__products");
 //carrito
-//const cartCount =
 const cart = document.querySelector(".cart-container");
 const totalSpan = cart.querySelector('.total-number');
+const cartCount = document.querySelector('.carrito-count');
 //navbar
 const cartList = cart.querySelector(".cart-list");
 
@@ -91,7 +91,7 @@ const renderCart = (productsList) => {
                             <button class="decrease-button" data-minus-id='${producto.id}'>-</button>
                             <span class="unidades">${producto.quantity}</span>
                             <button class="increase-button" data-plus-id='${producto.id}'>+</button>
-                            <button class="delete" data-delete-id='${producto.id}'>eliminar</button>
+                            <button class="delete" data-delete-id='${producto.id}'><i class="fa fa-trash" aria-hidden="true"></i></button>
                             <span class="subtotal">Subtotal:</span>
                             <span class="subtotal-number">${producto.price * producto.quantity}</span>
                             </li>
@@ -100,7 +100,10 @@ const renderCart = (productsList) => {
 
 
     cartList.innerHTML = productsString;
+
     totalSpan.textContent = `$ ${carrito.total}`;
+
+    cartCount.innerHTML += `<div ${carrito.quantity===0 ? 'class=hidden' : 'class=cart-count'}>${carrito.quantity}</div>`
 };
 
 
@@ -133,6 +136,12 @@ const addProduct = ({ target }) => {
 
     //desactivo el boton de comprar de la card que toque
     target.classList.add('disabled');
+
+
+    //saco la cuenta del carrito vieja para volver a renderizarlo actualizado
+    const cartCountNumber = cartCount.querySelector('.cart-count');
+    cartCountNumber.remove();
+
 
     renderCart(carrito.products);
 
@@ -179,6 +188,12 @@ const plusOrMinusOneProduct = ({ target }) => {
 
     //actualizar local storage
     localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    //saco la cuenta del carrito vieja para volver a renderizarlo actualizado
+    const cartCountNumber = cartCount.querySelector('.cart-count');
+    cartCountNumber.remove();
+
+
     renderCart(carrito.products);
 }
 
@@ -191,6 +206,8 @@ function app() {
     filterContainer.addEventListener('click', productsFilter);
     cardContainer.addEventListener('click', addProduct);
     cartList.addEventListener('click', plusOrMinusOneProduct);
+    //mostrarOcultar carrito
+    //confirmar compra
 };
 //-----------------------------------Run the app
 app();

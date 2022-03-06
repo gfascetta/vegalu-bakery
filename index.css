@@ -75,21 +75,38 @@ body {
     text-shadow: 3px 0px 2px rgba(255, 255, 255, 0.43);
 }
 
-.carrito {
+.carrito-count {
     width: 25%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    top: 0.2rem;
+    right: 3rem;
 }
 
-.carrito i {
+.carrito-count i {
     color: white;
-    font-size: 1.8rem;
+    font-size: 2rem;
 }
 
 .fa-cart-shopping:hover {
     background-color: rgb(136, 111, 83);
+}
+
+.hidden {
+    display: none;
+}
+
+.cart-count {
+    z-index: 4;
+    padding: 0.1rem 0.5rem;
+    background-color: red;
+    border-radius: 15px;
+    color: white;
+    font-weight: 600;
+    font-family: var(--font-ajustada);
 }
 
 
@@ -341,7 +358,8 @@ body {
 }
 
 .disabled {
-    background-color: aquamarine;
+    background-color: transparent;
+    color: grey;
     cursor: default;
 }
 
@@ -537,18 +555,21 @@ body {
 /* ******************************************************************************* */
 
 .cart-container {
-    background-color: yellow;
+    background-color: var(--lighter-secondary);
     height: auto;
     min-height: 10rem;
     width: 40%;
+    padding: 2rem;
     position: absolute;
     top: 4rem;
     right: 0;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     font-family: var(--letra-chica);
+    border: 2px solid var(--secondary);
 }
 
 .cart-list {
@@ -562,6 +583,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    padding: 1rem 0rem;
 }
 
 .item-img {
@@ -571,10 +593,34 @@ body {
 
 .cart-container button {
     font-family: var(--letra-chica);
-    border-radius: 10px;
-    padding: 0.2rem;
-    background-color: azure;
-    font-weight: 600;
+    border: 2px solid antiquewhite;
+    border-radius: 15px;
+    padding: 0.1rem 0.5rem;
+    background-color: var(--secondary);
+    font-weight: 800;
+    letter-spacing: 0.1rem;
+    font-size: 1.2rem;
+}
+
+.increase-button:hover,
+.decrease-button:hover {
+    color: white;
+    border-color: rgb(209, 161, 99);
+}
+
+.delete:hover {
+    background-color: red;
+    border-color: red;
+    color: white;
+}
+
+.total-container {
+    padding-bottom: 1.5rem;
+}
+
+.confirm-purchase:hover {
+    background-color: rgb(79, 148, 79);
+    color: white;
 }
 
 
@@ -617,6 +663,9 @@ body {
     /* plants section */
     .card__plant {
         width: 30%;
+    }
+    .cart-container {
+        width: 60%;
     }
 }
 
