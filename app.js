@@ -14,7 +14,7 @@ const totalSpan = cart.querySelector('.total-number');
 const cartList = cart.querySelector(".cart-list");
 
 
-//----------------------------------------------- local storage
+//----------Persistencia de datos---------- local storage
 let carrito = JSON.parse(localStorage.getItem("carrito")) || {
     products: [],
     quantity: 0,
@@ -69,6 +69,20 @@ const renderProducts = (productos) => {
 
 const renderCart = (productsList) => {
     let productsString = '';
+
+    //primero ordeno la lista que recibo
+    productsList.sort(function(a, b) {
+        if (a.id > b.id) {
+            return 1;
+        }
+        if (a.id < b.id) {
+            return -1;
+        }
+        // a must be equal to b
+        return 0;
+    });
+
+    //lo mapeo ordenado
     productsList.map(producto => {
         productsString += `
                             <li class="cart-item">
@@ -83,11 +97,14 @@ const renderCart = (productsList) => {
                             </li>
                             `
     }).join('');
+
+
     cartList.innerHTML = productsString;
     totalSpan.textContent = `$ ${carrito.total}`;
-
 };
 
+
+//------------------------------------Manejo de eventos
 
 //agregar un producto al carrito
 const addProduct = ({ target }) => {
@@ -121,14 +138,8 @@ const addProduct = ({ target }) => {
 
 };
 
-//------------------------------------Manejo de eventos
 
-//mostrar el navbar al scrollear arriba
-// const showNavbar = () => {
-//     console.log("scrolleaste") //????????????
-// };
-
-//filtrado de productos
+//----filtrado de productos
 const productsFilter = ({ target }) => {
     if (target.nodeName.toLowerCase() !== 'span') {
         return
@@ -142,17 +153,44 @@ const productsFilter = ({ target }) => {
     renderProducts(productsFiltrados);
 };
 
-//------------------------------------Persistencia de datos
+//----sumar o restar productos
+const plusOrMinusOneProduct = ({ target }) => {
+
+    if (!target.classList.contains('increase-button') && !target.classList.contains('decrease-button') && target.classList.contains('disabled')) {
+        return
+    };
+    console.log(target);
+    console.dir(target);
+    // ubicar mi producto
+    let productoSeleccionado = carrito.products.find(producto => producto.id === target.dataset.plusId);
+
+    if (target.classList.contains('increase-button')) {
+
+        //actualizar precio y subtotal
+        productoSeleccionado.quantity++;
+        carrito.total += productoSeleccionado.price;
+        carrito.products = carrito.products.filter(producto => producto.id !== productoSeleccionado.id);
+        carrito.products.push(productoSeleccionado);
+        console.log(carrito.products);
+
+        //sumar uno al carrito.quantity
+        carrito.quantity++
+    }
+
+    //actualizar local storage
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    renderCart(carrito.products);
+}
 
 //------------------------------------Entry point
 
 function app() {
     renderCategories(categories);
     renderProducts(products);
-    renderCart(carrito.products) // por si ya tenia algo en el LS
+    renderCart(carrito.products) // por si ya tenia algo en el LocalStorage
     filterContainer.addEventListener('click', productsFilter);
-    //window.onscroll = showNavbar
     cardContainer.addEventListener('click', addProduct);
+    cartList.addEventListener('click', plusOrMinusOneProduct);
 };
 //-----------------------------------Run the app
 app();
