@@ -88,10 +88,10 @@ const renderCart = (productsList) => {
                             <li class="cart-item">
                             <img src="${producto.img}" alt="" class="item-img">
                             <span class="name">${producto.name}</span>
-                            <button class="decrease-button" data-minus-id='${producto.id}'>-</button>
+                            <button class="decrease-button ${producto.quantity === 1? 'disabled' : ''}" data-minus-id='${producto.id}'>-</button>
                             <span class="unidades">${producto.quantity}</span>
                             <button class="increase-button" data-plus-id='${producto.id}'>+</button>
-                            <button class="delete" data-delete-id='${producto.id}'><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            <button class="delete" data-delete-id='${producto.id}'><i class="fa fa-trash" data-delete-id='${producto.id}' aria-hidden="true"></i></button>
                             <span class="subtotal">Subtotal:</span>
                             <span class="subtotal-number">${producto.price * producto.quantity}</span>
                             </li>
@@ -171,9 +171,9 @@ const plusOrMinusOneProduct = ({ target }) => {
     console.log(target);
     console.dir(target);
     // ubicar mi producto
-    let productoSeleccionado = carrito.products.find(producto => producto.id === target.dataset.plusId);
 
     if (target.classList.contains('increase-button')) {
+        let productoSeleccionado = carrito.products.find(producto => producto.id === target.dataset.plusId);
 
         //actualizar precio y subtotal
         productoSeleccionado.quantity++;
@@ -184,6 +184,25 @@ const plusOrMinusOneProduct = ({ target }) => {
 
         //sumar uno al carrito.quantity
         carrito.quantity++
+    }
+
+    if (target.classList.contains('decrease-button')) {
+        let productoSeleccionado = carrito.products.find(producto => producto.id === target.dataset.minusId);
+
+        if (productoSeleccionado.quantity === 2) {
+            target.classList.add('disabled');
+        };
+
+        if (productoSeleccionado.quantity > 1) {
+            //actualizar precio y subtotal
+            productoSeleccionado.quantity--;
+            carrito.total -= productoSeleccionado.price;
+            carrito.products = carrito.products.filter(producto => producto.id !== productoSeleccionado.id);
+            carrito.products.push(productoSeleccionado);
+
+            //restar uno al carrito.quantity
+            carrito.quantity--
+        }
     }
 
     //actualizar local storage
@@ -197,6 +216,19 @@ const plusOrMinusOneProduct = ({ target }) => {
     renderCart(carrito.products);
 }
 
+const deleteProduct = ({ target }) => {
+    if (!target.classList.contains('delete') && !target.classList.contains('fa-trash')) {
+        return
+    }
+    console.log(target);
+
+    let productoSeleccionado = carrito.products.find(producto => producto.id === target.dataset.deleteId);
+
+    carrito.products = carrito.products.filter(producto => producto.id !== target.dataset.deleteId);
+
+    renderCart(carrito.products);
+}
+
 //------------------------------------Entry point
 
 function app() {
@@ -206,6 +238,7 @@ function app() {
     filterContainer.addEventListener('click', productsFilter);
     cardContainer.addEventListener('click', addProduct);
     cartList.addEventListener('click', plusOrMinusOneProduct);
+    cartList.addEventListener('click', deleteProduct);
     //mostrarOcultar carrito
     //confirmar compra
 };
