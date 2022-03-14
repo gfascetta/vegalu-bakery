@@ -10,6 +10,10 @@ const cardContainer = document.querySelector(".card-container__products");
 const cart = document.querySelector(".cart-container");
 const totalSpan = cart.querySelector('.total-number');
 const cartCount = document.querySelector('.carrito-count');
+const countContainer = cartCount.querySelector('.count-container');
+const cartIcon = cartCount.querySelector('#cart-icon');
+const confirmPurchaseBtn = cart.querySelector('.confirm-purchase');
+
 //navbar
 const cartList = cart.querySelector(".cart-list");
 
@@ -70,7 +74,7 @@ const renderProducts = (productos) => {
 const renderCart = (productsList) => {
     let productsString = '';
 
-    //primero ordeno la lista que recibo
+    //primero ordeno la lista que recibo (esto lo saque de mdn)
     productsList.sort(function(a, b) {
         if (a.id > b.id) {
             return 1;
@@ -91,7 +95,7 @@ const renderCart = (productsList) => {
                             <button class="decrease-button ${producto.quantity === 1? 'disabled' : ''}" data-minus-id='${producto.id}'>-</button>
                             <span class="unidades">${producto.quantity}</span>
                             <button class="increase-button" data-plus-id='${producto.id}'>+</button>
-                            <button class="delete" data-delete-id='${producto.id}'><i class="fa fa-trash" data-delete-id='${producto.id}' aria-hidden="true"></i></button>
+                            <button class="delete" data-delete-id='${producto.id}' data-quantity='${producto.quantity}'><i class="fa fa-trash" data-delete-id='${producto.id}' data-quantity='${producto.quantity}' aria-hidden="true"></i></button>
                             <span class="subtotal">Subtotal:</span>
                             <span class="subtotal-number">${producto.price * producto.quantity}</span>
                             </li>
@@ -103,9 +107,13 @@ const renderCart = (productsList) => {
 
     totalSpan.textContent = `$ ${carrito.total}`;
 
-    cartCount.innerHTML += `<div ${carrito.quantity===0 ? 'class=hidden' : 'class=cart-count'}>${carrito.quantity}</div>`
+    renderCartNumber();
+
 };
 
+const renderCartNumber = () => {
+    countContainer.innerHTML = `<div ${carrito.quantity===0 ? 'class=hidden' : 'class=cart-count'}>${carrito.quantity}</div>`
+}
 
 //------------------------------------Manejo de eventos
 
@@ -136,11 +144,6 @@ const addProduct = ({ target }) => {
 
     //desactivo el boton de comprar de la card que toque
     target.classList.add('disabled');
-
-
-    //saco la cuenta del carrito vieja para volver a renderizarlo actualizado
-    const cartCountNumber = cartCount.querySelector('.cart-count');
-    cartCountNumber.remove();
 
 
     renderCart(carrito.products);
@@ -208,26 +211,51 @@ const plusOrMinusOneProduct = ({ target }) => {
     //actualizar local storage
     localStorage.setItem("carrito", JSON.stringify(carrito));
 
-    //saco la cuenta del carrito vieja para volver a renderizarlo actualizado
-    const cartCountNumber = cartCount.querySelector('.cart-count');
-    cartCountNumber.remove();
-
 
     renderCart(carrito.products);
 }
 
 const deleteProduct = ({ target }) => {
+    //si no toque en el div del tacho o en el tacho que no haga nada
     if (!target.classList.contains('delete') && !target.classList.contains('fa-trash')) {
-        return
-    }
+        return;
+    };
+
     console.log(target);
 
     let productoSeleccionado = carrito.products.find(producto => producto.id === target.dataset.deleteId);
 
     carrito.products = carrito.products.filter(producto => producto.id !== target.dataset.deleteId);
 
+    //calcular nuevo total del objeto carrito
+    carrito.total = carrito.total - productoSeleccionado.price * parseInt(target.dataset.quantity);
+
+    //actualizar la cantidad del objeto carrito
+    carrito.quantity = carrito.quantity - parseInt(target.dataset.quantity);
+
+    //actualizar local storage
+    localStorage.setItem("carrito", JSON.stringify(carrito));
     renderCart(carrito.products);
 }
+
+
+//mostrar ocultar carrito
+
+const showCart = ({ target }) => {
+    cart.classList.toggle('cart-active')
+}
+
+// finalizar compra
+const confirmPurchase = (e) => {
+    if (carrito.quantity === 0) {
+        window.alert('no seleccionaste ningun producto');
+    }
+    console.dir(e.target)
+
+    //window confirm y limpiar LS (removeItem carrito)
+    //recargar la pagina window.location.replace
+
+};
 
 //------------------------------------Entry point
 
@@ -240,7 +268,9 @@ function app() {
     cartList.addEventListener('click', plusOrMinusOneProduct);
     cartList.addEventListener('click', deleteProduct);
     //mostrarOcultar carrito
+    cartIcon.addEventListener('click', showCart);
     //confirmar compra
+    confirmPurchaseBtn.addEventListener('click', confirmPurchase);
 };
 //-----------------------------------Run the app
 app();
