@@ -115,6 +115,8 @@ const renderCartNumber = () => {
     countContainer.innerHTML = `<div ${carrito.quantity===0 ? 'class=hidden' : 'class=cart-count'}>${carrito.quantity}</div>`
 }
 
+
+
 //------------------------------------Manejo de eventos
 
 //agregar un producto al carrito
@@ -257,9 +259,39 @@ const confirmPurchase = (e) => {
 
 };
 
+
+//---------------------menu hamburguesa
+
+//menu hamburguesa
+const renderBurgerMenu = () => {
+    navbar.innerHTML += `
+    <div class='burger-container'>
+    <i class="fas fa-bars"></i>
+    </div>
+    `
+}
+
+const showBurgerMenu = ({ target }) => {
+    if (target.tagName !== 'I') {
+        return;
+    };
+    target.parentElement.parentElement.childNodes[1].classList.toggle('menu-active')
+}
+
+const burgerMenu = () => {
+    if (window.screen.width > 900) {
+        return;
+    };
+    renderBurgerMenu()
+    let burgerContainer = navbar.querySelector('.burger-container');
+    burgerContainer.addEventListener('click', showBurgerMenu)
+}
+
 //------------------------------------Entry point
 
 function app() {
+
+    burgerMenu();
     renderCategories(categories);
     renderProducts(products);
     renderCart(carrito.products) // por si ya tenia algo en el LocalStorage

@@ -681,11 +681,13 @@ body {
         align-items: center;
     }
     .menu-container {
+        width: 80%;
+        height: fit-content;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         position: absolute;
-        top: 9vh;
+        top: 10rem;
         left: 0;
         transform: translateX(-200%);
         background-color: var(--primary);
@@ -734,25 +736,20 @@ body {
     .fa-bars {
         font-size: 1.6rem;
         color: var(--lighter-secondary);
-        position: absolute;
-        top: 0;
-        left: 2rem;
-        z-index: 1;
     }
     .fa-times {
         display: none;
+    }
+    .menu-active {
+        transform: translateX(0%)
+    }
+    .burger-container {
+        height: 1.5rem;
+        width: 1.5rem;
         position: absolute;
-        top: 0;
+        top: 0.8rem;
         left: 2rem;
-    }
-    #navbar__checkbox:checked~.menu-container {
-        width: 100%;
-        transform: translateX(0);
-    }
-    #navbar__checkbox:checked~.navbar__label>.fa-bars {
-        display: none;
-    }
-    #navbar__checkbox:checked~.navbar__label>.fa-times {
+        z-index: 1;
         display: flex;
         align-items: center;
         justify-content: center;
