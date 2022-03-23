@@ -16,6 +16,7 @@ const confirmPurchaseBtn = cart.querySelector('.confirm-purchase');
 
 //navbar
 const cartList = cart.querySelector(".cart-list");
+const menuContainer = navbar.querySelector(".menu-container");
 
 
 //----------Persistencia de datos---------- local storage
@@ -25,6 +26,8 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || {
     total: 0
 };
 localStorage.setItem("carrito", JSON.stringify(carrito));
+
+
 
 //------------------------------------Renderizado de los componentes
 //mostrar categorias
@@ -37,6 +40,8 @@ const renderCategories = (categorias) => {
     }).join('');
     filterContainer.innerHTML = categoriasString;
 };
+
+
 //mostrar los productos
 const renderProducts = (productos) => {
     let productosToRender = "";
@@ -70,7 +75,6 @@ const renderProducts = (productos) => {
 
 
 //renderizar carrito
-
 const renderCart = (productsList) => {
     let productsString = '';
 
@@ -147,9 +151,7 @@ const addProduct = ({ target }) => {
     //desactivo el boton de comprar de la card que toque
     target.classList.add('disabled');
 
-
     renderCart(carrito.products);
-
 };
 
 
@@ -238,60 +240,66 @@ const deleteProduct = ({ target }) => {
     //actualizar local storage
     localStorage.setItem("carrito", JSON.stringify(carrito));
     renderCart(carrito.products);
+
+    //vuelvo a renderizar las cards para que se active el boton de comprar al producto que elimine
+    renderProducts(products);
 }
 
 
 //mostrar ocultar carrito
 
 const showCart = ({ target }) => {
-    cart.classList.toggle('cart-active')
+    cart.classList.toggle('cart-active');
+    //si tengo desplegado el menu que lo cierre
+    if (menuContainer.classList.contains("menu-active")) {
+        menuContainer.classList.toggle("menu-active");
+    }
 }
+
+const showBurgerMenu = ({ target }) => {
+    //     if (target.tagName !== 'I') {
+    //         return;
+    //     };
+    menuContainer.classList.toggle("menu-active");
+    console.log(target);
+    target.classList.toggle("fa-times");
+
+    //si tengo desplegado el carrito que lo cierre
+    if (cart.classList.contains("cart-active")) {
+        cart.classList.toggle("cart-active");
+    }
+};
+
+const burgerMenu = () => {
+    // if (window.screen.width > 900) {
+    //     return;
+    // };
+    let burgerContainer = navbar.querySelector('.burger-container');
+    burgerContainer.addEventListener('click', showBurgerMenu);
+}
+
+//---------------------menu hamburguesa
 
 // finalizar compra
 const confirmPurchase = (e) => {
     if (carrito.quantity === 0) {
         window.alert('no seleccionaste ningun producto');
     }
-    console.dir(e.target)
+    console.dir(e.target);
 
-    //window confirm y limpiar LS (removeItem carrito)
-    //recargar la pagina window.location.replace
-
+    if (window.confirm("Estás seguro de que quieres finalizar tu compra?")) {
+        window.alert("Gracias por tu compra!");
+        localStorage.clear();
+        window.location.replace('index.html');
+    };
 };
 
 
-//---------------------menu hamburguesa
-
-//menu hamburguesa
-const renderBurgerMenu = () => {
-    navbar.innerHTML += `
-    <div class='burger-container'>
-    <i class="fas fa-bars"></i>
-    </div>
-    `
-}
-
-const showBurgerMenu = ({ target }) => {
-    if (target.tagName !== 'I') {
-        return;
-    };
-    target.parentElement.parentElement.childNodes[1].classList.toggle('menu-active')
-}
-
-const burgerMenu = () => {
-    if (window.screen.width > 900) {
-        return;
-    };
-    renderBurgerMenu()
-    let burgerContainer = navbar.querySelector('.burger-container');
-    burgerContainer.addEventListener('click', showBurgerMenu)
-}
 
 //------------------------------------Entry point
 
 function app() {
 
-    burgerMenu();
     renderCategories(categories);
     renderProducts(products);
     renderCart(carrito.products) // por si ya tenia algo en el LocalStorage
@@ -299,6 +307,7 @@ function app() {
     cardContainer.addEventListener('click', addProduct);
     cartList.addEventListener('click', plusOrMinusOneProduct);
     cartList.addEventListener('click', deleteProduct);
+    burgerMenu();
     //mostrarOcultar carrito
     cartIcon.addEventListener('click', showCart);
     //confirmar compra
